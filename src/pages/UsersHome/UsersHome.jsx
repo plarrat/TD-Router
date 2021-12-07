@@ -1,25 +1,29 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UsersContext } from "../../providers/UsersProvider";
 
 export default function UsersHome() {
-  //   const lignesUsers = users.map((user) => {
-  //     return (
-  //       <tr>
-  //         <td>{user.id}</td>
-  //         <td>{user.name}</td>
-  //         <td>{user.username}</td>
-  //         <td>{user.email}</td>
-  //         <td>
-  //           <Link to={"/users/" + user.id} className="btn btn-warning">
-  //             Modifier
-  //           </Link>
-  //         </td>
-  //         <td>
-  //           <Button variant="danger">Supprimer</Button>
-  //         </td>
-  //       </tr>
-  //     );
-  //   });
+  const { users } = useContext(UsersContext);
+
+  const lignesUsers = users.map((user) => {
+    return (
+      <tr>
+        <td>{user.id}</td>
+        <td>{user.name}</td>
+        <td>{user.username}</td>
+        <td>{user.email}</td>
+        <td>
+          <Link to={"/users/" + user.id} className="btn btn-warning">
+            Modifier
+          </Link>
+        </td>
+        <td>
+          <Button variant="danger">Supprimer</Button>
+        </td>
+      </tr>
+    );
+  });
 
   return (
     <div>
@@ -40,7 +44,7 @@ export default function UsersHome() {
                   <th>Supprimer</th>
                 </tr>
               </thead>
-              {/* <tbody>{lignesUsers}</tbody> */}
+              <tbody>{lignesUsers}</tbody>
             </table>
           </div>
         </div>

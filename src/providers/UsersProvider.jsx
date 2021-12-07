@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
-const UsersContext = createContext();
+export const UsersContext = createContext();
 
 export default function UsersProvider({ children }) {
   const [users, setUsers] = useState([]);
@@ -13,7 +13,6 @@ export default function UsersProvider({ children }) {
 
   useEffect(() => {
     getUsers().then((datas) => setUsers(datas));
-    alert("Provider Users");
   }, []);
 
   return (
