@@ -5,7 +5,7 @@ import { UsersContext } from "../../providers/UsersProvider";
 import { Container, Row, Col, InputGroup, FormControl } from "react-bootstrap";
 
 export default function UsersHome() {
-  const { users, searchUsers } = useContext(UsersContext);
+  const { searchUsers } = useContext(UsersContext);
 
   const [search, setSearch] = useState("");
   const lignesUsers = searchUsers(search).map((user) => {

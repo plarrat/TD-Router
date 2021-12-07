@@ -30,9 +30,10 @@ export default function UsersProvider({ children }) {
   }
 
   function getUser(id) {
+    if (users.length === 0) return undefined;
     id = parseInt(id);
     const res = users.filter((user) => user.id === id);
-    return res[0] !== undefined ? res[0] : undefined;
+    return res[0] !== undefined ? res[0] : false;
   }
 
   return (
