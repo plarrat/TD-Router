@@ -1,37 +1,25 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
 
 export default function UsersHome() {
-  const [users, setUsers] = useState([]);
-
-  async function getUsers() {
-    let datas = await axios.get("https://jsonplaceholder.typicode.com/users");
-    return datas.data;
-  }
-  useEffect(() => {
-    getUsers().then((datas) => setUsers(datas));
-  }, []);
-
-  const lignesUsers = users.map((user) => {
-    return (
-      <tr>
-        <td>{user.id}</td>
-        <td>{user.name}</td>
-        <td>{user.username}</td>
-        <td>{user.email}</td>
-        <td>
-          <Link to={"/users/" + user.id} className="btn btn-warning">
-            Modifier
-          </Link>
-        </td>
-        <td>
-          <Button variant="danger">Supprimer</Button>
-        </td>
-      </tr>
-    );
-  });
+  //   const lignesUsers = users.map((user) => {
+  //     return (
+  //       <tr>
+  //         <td>{user.id}</td>
+  //         <td>{user.name}</td>
+  //         <td>{user.username}</td>
+  //         <td>{user.email}</td>
+  //         <td>
+  //           <Link to={"/users/" + user.id} className="btn btn-warning">
+  //             Modifier
+  //           </Link>
+  //         </td>
+  //         <td>
+  //           <Button variant="danger">Supprimer</Button>
+  //         </td>
+  //       </tr>
+  //     );
+  //   });
 
   return (
     <div>
@@ -52,7 +40,7 @@ export default function UsersHome() {
                   <th>Supprimer</th>
                 </tr>
               </thead>
-              <tbody>{lignesUsers}</tbody>
+              {/* <tbody>{lignesUsers}</tbody> */}
             </table>
           </div>
         </div>

@@ -5,6 +5,7 @@ import Home from "../Home/Home";
 import UsersHome from "../UsersHome/UsersHome";
 import UsersFormUpdate from "../UsersFormUpdate/UsersFormUpdate";
 import Error404 from "./../../components/Error404/Error404";
+import UsersProvider from "../../providers/UsersProvider";
 
 export default function App() {
   return (
@@ -17,12 +18,13 @@ export default function App() {
           <Route path="/" element={<Home />}></Route>
         </Routes>
 
-        <Routes>
-          <Route path="/users" element={<UsersHome />}></Route>
-          <Route path="/users/*" element={<UsersHome />}></Route>
-          <Route path="/users/:id" element={<UsersFormUpdate />}></Route>
-        </Routes>
-
+        <UsersProvider>
+          <Routes>
+            <Route path="/users" element={<UsersHome />}></Route>
+            <Route path="/users/*" element={<UsersHome />}></Route>
+            <Route path="/users/:id" element={<UsersFormUpdate />}></Route>
+          </Routes>
+        </UsersProvider>
         <Routes>
           {/* <Route path="*" exact={true} element={<Error404 />}></Route> */}
         </Routes>
