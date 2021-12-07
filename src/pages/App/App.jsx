@@ -3,6 +3,8 @@ import NavbarHTML from "../../components/NavbarHTML/NavbarHTML";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../Home/Home";
 import UsersHome from "../UsersHome/UsersHome";
+import UsersFormUpdate from "../UsersFormUpdate/UsersFormUpdate";
+import Error404 from "./../../components/Error404/Error404";
 
 export default function App() {
   return (
@@ -18,6 +20,11 @@ export default function App() {
         <Routes>
           <Route path="/users" element={<UsersHome />}></Route>
           <Route path="/users/*" element={<UsersHome />}></Route>
+          <Route path="/users/:id" element={<UsersFormUpdate />}></Route>
+        </Routes>
+
+        <Routes>
+          {/* <Route path="*" exact={true} element={<Error404 />}></Route> */}
         </Routes>
       </Router>
     </div>
