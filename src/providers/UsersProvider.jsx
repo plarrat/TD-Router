@@ -36,8 +36,20 @@ export default function UsersProvider({ children }) {
     return res[0] !== undefined ? res[0] : false;
   }
 
+  function updateUser(user) {
+    const id = user.id;
+    const i = users.findIndex((user) => user.id === id);
+    let tmp = [...users];
+    if (i >= 0) {
+      tmp[i] = user;
+      setUsers(tmp);
+    }
+  }
+
   return (
-    <UsersContext.Provider value={{ users, setUsers, searchUsers, getUser }}>
+    <UsersContext.Provider
+      value={{ users, setUsers, searchUsers, getUser, updateUser }}
+    >
       {children}
     </UsersContext.Provider>
   );
