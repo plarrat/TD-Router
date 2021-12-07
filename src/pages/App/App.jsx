@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../Home/Home";
 import UsersHome from "../UsersHome/UsersHome";
 import UsersFormUpdate from "../UsersFormUpdate/UsersFormUpdate";
-import Error404 from "./../../components/Error404/Error404";
 import UsersProvider from "../../providers/UsersProvider";
 
 export default function App() {
@@ -25,9 +24,6 @@ export default function App() {
             <Route path="/users/:id" element={<UsersFormUpdate />}></Route>
           </Routes>
         </UsersProvider>
-        <Routes>
-          {/* <Route path="*" exact={true} element={<Error404 />}></Route> */}
-        </Routes>
       </Router>
     </div>
   );

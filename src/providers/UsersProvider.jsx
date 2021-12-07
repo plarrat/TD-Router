@@ -25,6 +25,7 @@ export default function UsersProvider({ children }) {
       if (name.indexOf(searchMini) > -1) return user;
       if (username.indexOf(searchMini) > -1) return user;
       if (email.indexOf(searchMini) > -1) return user;
+      return null;
     });
     return res;
   }
