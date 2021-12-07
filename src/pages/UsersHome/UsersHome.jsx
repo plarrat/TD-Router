@@ -1,12 +1,14 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UsersContext } from "../../providers/UsersProvider";
+import { Container, Row, Col, InputGroup, FormControl } from "react-bootstrap";
 
 export default function UsersHome() {
-  const { users } = useContext(UsersContext);
+  const { users, searchUsers } = useContext(UsersContext);
 
-  const lignesUsers = users.map((user) => {
+  const [search, setSearch] = useState("");
+  const lignesUsers = searchUsers(search).map((user) => {
     return (
       <tr>
         <td>{user.id}</td>
@@ -27,12 +29,28 @@ export default function UsersHome() {
 
   return (
     <div>
-      <section className="container mt-5">
-        <div className="row">
-          <div className="col-md-12">
+      <Container className=" mt-5">
+        <Row>
+          <Col md="12">
             <h1>Gestion des utilisateurs</h1>
             <hr />
-
+          </Col>
+        </Row>
+        <Row>
+          <Col md="6">
+            <InputGroup className="mb-3">
+              <FormControl
+                placeholder="Rechercher un utilisatreur"
+                type="search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <Button variant="outline-secondary">Rechercher</Button>
+            </InputGroup>
+          </Col>
+        </Row>
+        <Row>
+          <Col md="12">
             <table className="table table-striped table-hover">
               <thead>
                 <tr>
@@ -46,9 +64,9 @@ export default function UsersHome() {
               </thead>
               <tbody>{lignesUsers}</tbody>
             </table>
-          </div>
-        </div>
-      </section>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
